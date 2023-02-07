@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { Component } from 'react';
 import Controls from './Controls'
 
-export default class FeedbackCounter extends Component {
+class FeedbackCounter extends Component {
 static defaultProps = {
     initialValue: 0,
 };
@@ -48,4 +48,6 @@ handleIncrementBad = () => {
 </div>
     )
   }
-}
+};
+
+export default FeedbackCounter;
