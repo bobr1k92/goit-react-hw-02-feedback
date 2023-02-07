@@ -1,5 +1,5 @@
-import FeedBackCounter from './FeedBack/FeedBack';
-import Controls from './FeedBack/Controls';
+// import FeedBackCounter from './FeedBack/FeedBack';
+// import Controls from './FeedBack/Controls';
 
 export const App = () => {
   return (
@@ -14,7 +14,7 @@ export const App = () => {
       }}
     >
       
-      <FeedBackCounter/>
+      {/* <FeedBackCounter/> */}
     </div>
   );
 };
