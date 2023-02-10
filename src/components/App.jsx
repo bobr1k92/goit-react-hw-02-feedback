@@ -1,21 +1,31 @@
 import { Component } from 'react';
-import Container from './GlobalContainer/global';
-import Section from 'components/Section/Section';
-import FeedbackOptions from 'components/FeedbackOptions/FeedbackOptions';
-import Statistics from 'components/Statistics/Statistics';
-import Notification from './Notification/Notification';
-import { logDOM } from '@testing-library/react';
+import PropTypes from 'prop-types';
+import Container from 'components/GlobalContainer';
+import Section from 'components/Section';
+import FeedbackOptions from 'components/FeedbackOptions';
+import Statistics from 'components/Statistics'
+import Notification from 'components/Notification';
 
 class FeedBackCounter extends Component {
 
   static defaultProps = {
       initialValue: 0,
   };
+
+  static propTypes = {
+    options: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    onLeaveFeedback: PropTypes.func.isRequired,
+    title: PropTypes.string.isRequired,
+    children: PropTypes.node.isRequired,
+    message: PropTypes.string.isRequired,
+    total: PropTypes.func.isRequired,
+    percent: PropTypes.func.isRequired,
+};
       state = {
       good: this.props.initialValue,
       neutral: this.props.initialValue,
       bad: this.props.initialValue,
-  };
+};
 
 
   onLeaveFeedback = (key) => {

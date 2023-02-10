@@ -1,16 +1,10 @@
-// const Controls = ({ onIncrementGood, onIncrementNeutral, onIncrementBad }) => (
-//     <div>
-//         <button type='button' onClick={onIncrementGood}>Good</button>
-//         <button type='button' onClick={onIncrementNeutral}>Neutral</button>
-//         <button type='button' onClick={onIncrementBad}>Bad</button>
-//     </div>
-// );
+import css from './Feedback.module.css';
 
 const Controls = ({ options, onLeaveFeedback }) => (
-    <ul>
+    <ul className={css.feedbackList}>
     {options.map((options => (
       <li key={options}>
-        <button type="button" name={options} onClick={() => onLeaveFeedback(options)}>
+        <button type="button" onClick={() => onLeaveFeedback(options)}>
           {options}
         </button>
       </li>
