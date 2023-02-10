@@ -1,66 +1,52 @@
 import { Component } from 'react';
+import Container from './GlobalContainer/global';
 import Section from 'components/Section/Section';
 import FeedbackOptions from 'components/FeedbackOptions/FeedbackOptions';
 import Statistics from 'components/Statistics/Statistics';
 import Notification from './Notification/Notification';
+import { logDOM } from '@testing-library/react';
 
 class FeedBackCounter extends Component {
+
   static defaultProps = {
       initialValue: 0,
   };
       state = {
-  
       good: this.props.initialValue,
       neutral: this.props.initialValue,
       bad: this.props.initialValue,
-  
-  };
-  
-  
-  handleIncrementGood = () => {
-  
-    this.setState(prevState => ({
-      good: prevState.good +1,
-    }));
-  }
-  handleIncrementNeutral = () => {
-      this.setState(prevState => ({         
-        neutral: prevState.neutral +1,               
-    }));
-  }
-  handleIncrementBad = () => {
-      this.setState(prevState => ({
-        bad: prevState.bad +1,
-    }));
   };
 
+
+  onLeaveFeedback = (key) => {
+    this.setState(prevState => ({
+      [key]: prevState[key] + 1,
+    }));
+  };
 
   countTotalFeedback = () => {
-    let total = this.state.good + this.state.neutral + this.state.bad;
+    const { good, neutral, bad} = this.state;
+    let total = good + neutral + bad;
     return total;
   };
-
 
   countPositiveFeedbackPercentage = () => {
     return this.countTotalFeedback() !== 0 ? Math.round(
       (this.state.good / this.countTotalFeedback()) * 100) : 0;
   };
 
-
-
-
   render() {
     const { good, neutral, bad} = this.state;
     const total = this.countTotalFeedback();
     const percent = this.countPositiveFeedbackPercentage();
+    const options = Object.keys(this.state);
 
     return (
-  <div>
+  <Container>
   <Section title={'Please leave feedback'}>
   <FeedbackOptions 
-      onIncrementGood={this.handleIncrementGood}
-      onIncrementNeutral={this.handleIncrementNeutral}
-      onIncrementBad={this.handleIncrementBad}
+    options={options}
+    onLeaveFeedback={this.onLeaveFeedback}
   />
   </Section>
   <Section title={'Statistics'}> 
@@ -73,24 +59,14 @@ class FeedBackCounter extends Component {
   /> ) : (<Notification message={'There is no feedback'}/>
   )}
   </Section>
-  </div>
-    )
-  }
+  </Container>
+    );
+  };
 };
 
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      
+    <div>
       <FeedBackCounter/>
     </div>
   );
