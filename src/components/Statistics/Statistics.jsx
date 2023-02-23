@@ -1,5 +1,5 @@
-// import { BsEmojiSmile, BsEmojiNeutral, BsEmojiFrown, BsPercent, BsEmojiLaughing } from "react-icons/bs";
-import css from "./statistics.module.css"
+import { BsEmojiSmile, BsEmojiNeutral, BsEmojiFrown, BsPercent, BsEmojiLaughing } from "react-icons/bs";
+import css from './statistics.module.css'
 
 const Statistics = ({good, neutral, bad, total, percent}) => (
 
