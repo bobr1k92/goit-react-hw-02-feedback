@@ -8,7 +8,7 @@ const Statistics = ({good, neutral, bad, total, percent}) => (
       <li className={css.statisticsItem}><span className={css.emodji}><BsEmojiNeutral size={20}/></span>Neutral: {neutral}</li>
       <li className={css.statisticsItem}><span className={css.emodji}><BsEmojiFrown size={20}/></span>Bad: {bad}</li>
       <li className={css.statisticsItem}><span className={css.emodji}><BsPercent size={20}/></span>Total: {total}</li>
-      <li className={css.statisticsItem}><span className={css.emodji}><BsEmojiLaughing size={20}/></span>PositivePercentage: {percent}%</li>
+      <li></span>PositivePercentage: {percent}%</li>
 </ul>
 );
 
